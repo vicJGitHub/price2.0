@@ -1,0 +1,17 @@
+package com.hywa.pricepublish.service.content;
+
+
+import com.hywa.pricepublish.representation.ContentInfoRep;
+import com.hywa.pricepublish.representation.ContentInfoReps;
+
+public interface ContentService {
+
+    void save(ContentInfoRep prContentInfoRep);
+
+    void update(ContentInfoRep prContentInfoRep);
+
+    ContentInfoReps findArticleInfoAll(int pageNum, int pageSize, ContentInfoRep prContentInfoRep);
+
+    ContentInfoRep findContentById(String id);
+
+}

@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hywa.pricepublish.dao.mapper.AvgPriceStatisticsMapper">
+  <resultMap id="BaseResultMap" type="com.hywa.pricepublish.dao.entity.AvgPriceStatistics">
+    <id column="id" property="id" jdbcType="CHAR"/>
+    <result column="product_id" property="productId" jdbcType="CHAR"/>
+    <result column="avg_price" property="avgPrice" jdbcType="DECIMAL"/>
+    <result column="unit" property="unit" jdbcType="VARCHAR"/>
+    <result column="price_type_id" property="priceTypeId" jdbcType="CHAR"/>
+    <result column="create_time" property="createTime" jdbcType="DATE"/>
+    <result column="province_id" property="provinceId" jdbcType="CHAR"/>
+    <result column="city_id" property="cityId" jdbcType="CHAR"/>
+    <result column="county_id" property="countyId" jdbcType="CHAR"/>
+    <result column="market_id" property="marketId" jdbcType="CHAR"/>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" suffix=")" prefixOverrides="and">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                    separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" suffix=")" prefixOverrides="and">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                    separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, product_id, avg_price, unit, price_type_id, create_time, province_id, city_id, 
+    county_id, market_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap"
+    parameterType="com.hywa.pricepublish.dao.entity.AvgPriceStatisticsExample">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List"/>
+    from avg_price_statistics
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List"/>
+    from avg_price_statistics
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from avg_price_statistics
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample"
+    parameterType="com.hywa.pricepublish.dao.entity.AvgPriceStatisticsExample">
+    delete from avg_price_statistics
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hywa.pricepublish.dao.entity.AvgPriceStatistics">
+    insert into avg_price_statistics (id, product_id, avg_price, 
+      unit, price_type_id, create_time, 
+      province_id, city_id, county_id, 
+      market_id)
+    values (#{id,jdbcType=CHAR}, #{productId,jdbcType=CHAR}, #{avgPrice,jdbcType=DECIMAL}, 
+      #{unit,jdbcType=VARCHAR}, #{priceTypeId,jdbcType=CHAR}, #{createTime,jdbcType=DATE}, 
+      #{provinceId,jdbcType=CHAR}, #{cityId,jdbcType=CHAR}, #{countyId,jdbcType=CHAR}, 
+      #{marketId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hywa.pricepublish.dao.entity.AvgPriceStatistics">
+    insert into avg_price_statistics
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="avgPrice != null">
+        avg_price,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="priceTypeId != null">
+        price_type_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="provinceId != null">
+        province_id,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="countyId != null">
+        county_id,
+      </if>
+      <if test="marketId != null">
+        market_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=CHAR},
+      </if>
+      <if test="avgPrice != null">
+        #{avgPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="priceTypeId != null">
+        #{priceTypeId,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="provinceId != null">
+        #{provinceId,jdbcType=CHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=CHAR},
+      </if>
+      <if test="countyId != null">
+        #{countyId,jdbcType=CHAR},
+      </if>
+      <if test="marketId != null">
+        #{marketId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample"
+    parameterType="com.hywa.pricepublish.dao.entity.AvgPriceStatisticsExample"
+    resultType="java.lang.Integer">
+    select count(*) from avg_price_statistics
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </select>
+  <select id="selectThisPeriodPrice"
+    resultType="com.hywa.pricepublish.dao.entity.AvgPriceStatistics" useCache="true">
+    select a.product_id,avg(a.avg_price) avg_price,a.unit,d.name productName,a.market_id
+    from price_publish.avg_price_statistics a
+    left join province p on p.id = a.province_id
+    left join product_info d on d.id = a.product_id
+    where p.name = '贵州省'
+    <if test="priceTypeId != null">
+      and product_type_id = #{priceTypeId}
+    </if>
+
+    <if test="productBigTypeId != null">
+      and d.productBigTypeId = #{productBigTypeId}
+    </if>
+
+    <if test="timeType == 1">
+      and DATEDIFF(a.create_time,NOW())= 0
+    </if>
+
+    <if test="timeType == 2">
+      and YEARWEEK(date_format(a.create_time,'%Y-%m-%d')) = YEARWEEK(now())
+    </if>
+
+    <if test="timeType == 3">
+      and date_format(a.create_time,'%Y-%m') = date_format(now(),'%Y-%m')
+    </if>
+
+    <if test="timeType == 4">
+      and QUARTER(a.create_time) = QUARTER(now());
+    </if>
+
+    <if test="timeType == 5">
+      and YEAR(a.create_time) = YEAR(NOW());
+    </if>
+    group by a.product_id;
+  </select>
+  <select id="selectLastPeriodPrice"
+    resultType="com.hywa.pricepublish.dao.entity.AvgPriceStatistics" useCache="true">
+    select a.product_id,avg(a.avg_price) avg_price,a.unit,d.name productName,a.market_id
+    from price_publish.avg_price_statistics a
+    left join province p on p.id = a.province_id
+    left join product_info d on d.id = a.product_id
+    where p.name = '贵州省'
+    <if test="priceTypeId != null">
+      and product_type_id = #{priceTypeId}
+    </if>
+
+    <if test="productBigTypeId != null">
+      and d.productBigTypeId = #{productBigTypeId}
+    </if>
+
+    <if test="timeType == 1">
+      and DATEDIFF(a.create_time,NOW()) = 0
+    </if>
+
+    <if test="timeType == 2">
+      and YEARWEEK(date_format(a.create_time,'%Y-%m-%d')) = YEARWEEK(now())-1
+    </if>
+
+    <if test="timeType == 3">
+      and PERIOD_DIFF(date_format(now(),'%Y%m' ),date_format(a.create_time, '%Y%m')) = 1
+    </if>
+
+    <if test="timeType == 4">
+      and QUARTER(a.create_time) = QUARTER(DATE_SUB(now(),interval 1 QUARTER));
+    </if>
+
+    <if test="timeType == 5">
+      and year(a.create_time) = year(date_sub(now(),interval 1 year))
+    </if>
+    group by a.product_id;
+  </select>
+
+  <update id="updateByExampleSelective" parameterType="map">
+    update avg_price_statistics
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=CHAR},
+      </if>
+      <if test="record.productId != null">
+        product_id = #{record.productId,jdbcType=CHAR},
+      </if>
+      <if test="record.avgPrice != null">
+        avg_price = #{record.avgPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.unit != null">
+        unit = #{record.unit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.priceTypeId != null">
+        price_type_id = #{record.priceTypeId,jdbcType=CHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=DATE},
+      </if>
+      <if test="record.provinceId != null">
+        province_id = #{record.provinceId,jdbcType=CHAR},
+      </if>
+      <if test="record.cityId != null">
+        city_id = #{record.cityId,jdbcType=CHAR},
+      </if>
+      <if test="record.countyId != null">
+        county_id = #{record.countyId,jdbcType=CHAR},
+      </if>
+      <if test="record.marketId != null">
+        market_id = #{record.marketId,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update avg_price_statistics
+    set id = #{record.id,jdbcType=CHAR},
+    product_id = #{record.productId,jdbcType=CHAR},
+    avg_price = #{record.avgPrice,jdbcType=DECIMAL},
+    unit = #{record.unit,jdbcType=VARCHAR},
+    price_type_id = #{record.priceTypeId,jdbcType=CHAR},
+    create_time = #{record.createTime,jdbcType=DATE},
+    province_id = #{record.provinceId,jdbcType=CHAR},
+    city_id = #{record.cityId,jdbcType=CHAR},
+    county_id = #{record.countyId,jdbcType=CHAR},
+    market_id = #{record.marketId,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective"
+    parameterType="com.hywa.pricepublish.dao.entity.AvgPriceStatistics">
+    update avg_price_statistics
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=CHAR},
+      </if>
+      <if test="avgPrice != null">
+        avg_price = #{avgPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="priceTypeId != null">
+        price_type_id = #{priceTypeId,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="provinceId != null">
+        province_id = #{provinceId,jdbcType=CHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=CHAR},
+      </if>
+      <if test="countyId != null">
+        county_id = #{countyId,jdbcType=CHAR},
+      </if>
+      <if test="marketId != null">
+        market_id = #{marketId,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey"
+    parameterType="com.hywa.pricepublish.dao.entity.AvgPriceStatistics">
+    update avg_price_statistics
+    set product_id = #{productId,jdbcType=CHAR},
+      avg_price = #{avgPrice,jdbcType=DECIMAL},
+      unit = #{unit,jdbcType=VARCHAR},
+      price_type_id = #{priceTypeId,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=DATE},
+      province_id = #{provinceId,jdbcType=CHAR},
+      city_id = #{cityId,jdbcType=CHAR},
+      county_id = #{countyId,jdbcType=CHAR},
+      market_id = #{marketId,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

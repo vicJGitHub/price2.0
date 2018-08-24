@@ -1,0 +1,15 @@
+2018-08-23 17:44:04,012 INFO (StartupInfoLogger.java:50)- Starting PricePublishingSystemApplication on 2016-20170502RH with PID 10508 (started by Administrator in E:\price_publishing\02.代码库\06.价格发布系统\02.后端\price-publishing-system)
+2018-08-23 17:44:04,013 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
+2018-08-23 17:44:04,017 INFO (SpringApplication.java:663)- The following profiles are active: dev
+2018-08-23 17:47:46,003 INFO (StartupInfoLogger.java:50)- Starting PricePublishingSystemApplication on 2016-20170502RH with PID 4200 (started by Administrator in E:\price_publishing\02.代码库\06.价格发布系统\02.后端\price-publishing-system)
+2018-08-23 17:47:46,005 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
+2018-08-23 17:47:46,008 INFO (SpringApplication.java:663)- The following profiles are active: dev
+2018-08-23 17:49:12,840 INFO (StartupInfoLogger.java:50)- Starting PricePublishingSystemApplication on 2016-20170502RH with PID 11572 (started by Administrator in E:\price_publishing\02.代码库\06.价格发布系统\02.后端\price-publishing-system)
+2018-08-23 17:49:12,844 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
+2018-08-23 17:49:12,846 INFO (SpringApplication.java:663)- The following profiles are active: dev
+2018-08-23 17:49:21,275 INFO (StartupInfoLogger.java:59)- Started PricePublishingSystemApplication in 9.487 seconds (JVM running for 11.154)
+2018-08-23 18:01:28,796 INFO (TokenAuthorFilter.java:87)- pc&c767d3b0b6954a6198d35de43cfd63c2_8f964e1b4fb346d090f5d97cae12af7a
+2018-08-23 18:01:28,798 INFO (RedisTokenManager.java:36)- tokenModel : TokenModel(userId=pc&c767d3b0b6954a6198d35de43cfd63c2, token=8f964e1b4fb346d090f5d97cae12af7a)
+2018-08-23 18:01:29,817 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT info.*, content.content content FROM content_info info LEFT JOIN content content ON info.content_id = content.id WHERE info.is_del = 0 AND content.is_del = 0 AND info.id=? 
+2018-08-23 18:01:30,539 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 00cc50e118474321b3e19393be5ee62f(String)
+2018-08-23 18:01:30,581 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1

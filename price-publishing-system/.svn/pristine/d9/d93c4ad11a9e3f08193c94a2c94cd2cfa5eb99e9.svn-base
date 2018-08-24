@@ -1,0 +1,37 @@
+package com.hywa.pricepublish.dao.mapper;
+
+import com.hywa.pricepublish.dao.entity.PpsContent;
+import com.hywa.pricepublish.dao.entity.PpsContentExample;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+public interface PpsContentMapper {
+    int countByExample(PpsContentExample example);
+
+    int deleteByExample(PpsContentExample example);
+
+    int deleteByPrimaryKey(String id);
+
+    int insert(PpsContent record);
+
+    int insertSelective(PpsContent record);
+
+    List<PpsContent> selectByExampleWithBLOBs(PpsContentExample example);
+
+    List<PpsContent> selectByExample(PpsContentExample example);
+
+    PpsContent selectByPrimaryKey(String id);
+
+    int updateByExampleSelective(@Param("record") PpsContent record, @Param("example") PpsContentExample example);
+
+    int updateByExampleWithBLOBs(@Param("record") PpsContent record, @Param("example") PpsContentExample example);
+
+    int updateByExample(@Param("record") PpsContent record, @Param("example") PpsContentExample example);
+
+    int updateByPrimaryKeySelective(PpsContent record);
+
+    int updateByPrimaryKeyWithBLOBs(PpsContent record);
+
+    int updateByPrimaryKey(PpsContent record);
+}
