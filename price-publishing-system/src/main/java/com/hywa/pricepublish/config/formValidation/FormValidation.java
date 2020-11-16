@@ -14,12 +14,12 @@ import java.lang.reflect.Method;
 public class FormValidation {
 
     //注解式表单验证
-    @Around("@annotation(com.hywa.pricepublish.config.formValidation.JsonValidate)")
+    @Around("@annotation(com.hywa.pricepublish.config.formValidation.Validate)")
     @Order(1)
     public Object formValidation(ProceedingJoinPoint point) throws Throwable {
         //获得对象方法
         Method method = ((MethodSignature) point.getSignature()).getMethod();
-        JsonValidate annotation = method.getAnnotation(JsonValidate.class);
+        JsonValidate annotation = method.getAnnotation(Validate.class);
         //通过反射调用注解中的方法
         Class<?> clazz = Class.forName(annotation.value().getName());
         Method clazzMethod = clazz.getMethod("validate", Object[].class);
