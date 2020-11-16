@@ -11,7 +11,7 @@ import java.lang.annotation.*;
 @Documented
 @Component
 @Scope("prototype")
-public @interface JsonValidate {
+public @interface Validate {
 
     Class<?> value();
 }
